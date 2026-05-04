@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --arc-black: #0a0a0a;
+  --arc-gold: #c9a84c;
+  --arc-gold-light: #e8c96a;
+  --arc-teal: #1e9e78;
+  --arc-surface: #111111;
+  --arc-surface2: #1a1a1a;
+  --arc-surface3: #222222;
+  --arc-border: rgba(255,255,255,0.07);
+  --arc-border2: rgba(255,255,255,0.12);
+  --arc-text: #e8e4dc;
+  --arc-muted: #888880;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  background: var(--arc-black);
+  color: var(--arc-text);
+  font-family: var(--font-syne), sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--arc-surface); }
+::-webkit-scrollbar-thumb { background: var(--arc-surface3); border-radius: 2px; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(12px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes spin  { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes shimmer {
+  0%  { background-position: -200% center; }
+  100%{ background-position:  200% center; }
+}
+
+.animate-fade-up   { animation: fadeUp .4s ease forwards; }
+.animate-pulse-dot { animation: pulse 2s infinite; }
+.animate-spin-slow { animation: spin 1s linear infinite; }
+.skeleton {
+  background: linear-gradient(90deg,var(--arc-surface2) 25%,var(--arc-surface3) 50%,var(--arc-surface2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.c-comment { color: var(--arc-muted); }
+.c-keyword { color: #c792ea; }
+.c-string  { color: #c3e88d; }
+.c-var     { color: var(--arc-gold); }
+.c-fn      { color: #82aaff; }
+.c-num     { color: #f78c6c; }
